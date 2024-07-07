@@ -42,7 +42,8 @@ void compareSortingSpeeds(PropertyNode* properties, int parameterChoice) {
 
 // Main function
 int main() {
-    PropertyNode* properties = readCSV("mudah-apartment-kl-selangor mmz.csv");
+    csvReader reader("mudah-apartment-kl-selangor mmz.csv");
+    PropertyNode* properties = reader.readCSV();
 
     int mainMenuChoice;
 
@@ -52,27 +53,31 @@ int main() {
         mainMenuChoice = getMenuChoice();
 
         int parameterChoice;
+        vector<int> columnChoices;
 
         if (mainMenuChoice == 1 || mainMenuChoice == 2 || mainMenuChoice == 3) {
             do {
                 parameterChoice = getColumnChoice();
+                columnChoices.push_back(parameterChoice);
             } while (parameterChoice < 0 || parameterChoice > 13);
 
             if (parameterChoice == 13) {
                 break;
             }
-        }
+        } 
 
         // Process user mainMenuChoice
         switch (mainMenuChoice) {
             case 1:
                 sorted = sortProperties(copyProperties(properties), parameterChoice, true);
-                displayProperties(sorted);
+                displayProperties(sorted, columnChoices);
+                reader.writePropertiesToCSV(sorted, "sorted_properties.csv");
                 freeList(sorted);
                 break;
             case 2:
                 sorted = sortProperties(copyProperties(properties), parameterChoice, false);
-                displayProperties(sorted);
+                displayProperties(sorted, columnChoices);
+                reader.writePropertiesToCSV(sorted, "sorted_properties.csv");
                 freeList(sorted);
                 break;
             case 3: 

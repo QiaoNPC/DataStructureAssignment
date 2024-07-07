@@ -50,6 +50,15 @@ bool compareByRegion(const Property& a, const Property& b) {
   return a.region < b.region;
 }
 
+bool compareByFacilities(const string& a, const string& b) {
+  return a < b;
+}
+
+// Comparison function for sorting additional facilities alphabetically
+bool compareByAdditionalFacilities(const string& a, const string& b) {
+  return a < b;
+}
+
 PropertyNode* sortProperties(PropertyNode* properties, int parameterChoice, bool useMergeSort) {
   PropertyNode* sorted = nullptr;
 
