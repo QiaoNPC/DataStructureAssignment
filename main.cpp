@@ -24,19 +24,22 @@ void compareSortingSpeeds(PropertyNode* properties, int parameterChoice) {
     PropertyNode* propertiesCopy1 = copyProperties(properties);
     PropertyNode* propertiesCopy2 = copyProperties(properties);
 
+    cout << endl << endl;
+
     auto start = high_resolution_clock::now();
     sorted = sortProperties(propertiesCopy1, parameterChoice, true);
     auto end = high_resolution_clock::now();
     auto duration = duration_cast<milliseconds>(end - start).count();
     cout << "Merge Sort time: " << duration << " ms" << endl;
 
-    start = high_resolution_clock::now();
-    sorted2 = sortProperties(propertiesCopy2, parameterChoice, false);
-    end = high_resolution_clock::now();
-    duration = duration_cast<milliseconds>(end - start).count();
-    cout << "Quick Sort time: " << duration << " ms" << endl;
-
     freeList(sorted);
+
+    auto start2 = high_resolution_clock::now();
+    sorted2 = sortProperties(propertiesCopy2, parameterChoice, false);
+    auto end2 = high_resolution_clock::now();
+    auto duration2 = duration_cast<milliseconds>(end2 - start2).count();
+    cout << "Quick Sort time: " << duration2 << " ms" << endl;
+
     freeList(sorted2);
 }   
 

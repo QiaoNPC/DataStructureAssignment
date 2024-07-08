@@ -4,6 +4,7 @@
 int getMenuChoice() {
   int mainMenuChoice;
 
+  cout << endl << endl;
   cout << "===== Main Menu =====" << endl;
   cout << "1. Sort by Merge Sort" << endl;
   cout << "2. Sort by Insertion Sort" << endl;

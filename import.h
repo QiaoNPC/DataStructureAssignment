@@ -12,7 +12,6 @@
 #include "PropertyLinkedList.hpp"
 #include "CSVReader.hpp"
 #include "QuickSort.hpp"
-#include "InsertionSort.hpp"
 #include "MergeSort.hpp"
 #include "General.hpp"
 #include "Menu.hpp"
